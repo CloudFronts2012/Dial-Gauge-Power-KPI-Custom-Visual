@@ -1,0 +1,161 @@
+{
+    "dataRoles": [
+		{
+            "displayName": "Min",
+            "name": "min",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Max",
+            "name": "max",
+            "kind": "Measure"
+        },
+		{
+            "displayName": "Target Start",
+            "name": "yellowStart",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Target End",
+            "name": "yellowEnd",
+            "kind": "Measure"
+        },
+		{
+            "displayName": "Actual Start",
+            "name": "redStart",
+            "kind": "Measure"
+        },
+		{
+            "displayName": "Actual End",
+            "name": "redEnd",
+            "kind": "Measure"
+        },
+		{
+            "displayName": "Pointer Value",
+            "name": "pointerValue",
+            "kind": "Measure"
+        },
+		{
+            "displayName": "Percentage",
+            "name": "percentage",
+            "kind": "Measure"
+        },
+		{
+            "displayName": "Chart Name",
+            "name": "chartName",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "generalFormat": {
+            "displayName": "Format Value",
+            "properties": {
+			
+                "format": {
+					"displayName": "Toggle",
+                    "type": { "bool": true }
+                }
+            }
+        },
+		"generalPercentage": {
+            "displayName": "Percentage Sign",
+            "properties": {
+			
+                "percentage": {
+					"displayName": "Toggle",
+                    "type": { "bool": true }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+	
+	
+        {
+			"conditions":[
+				{
+					"min":{
+						"max":1
+					},
+					"max":{
+						"max":1
+					},
+					"yellowStart":{
+						"max":1
+					},
+					"yellowEnd":{
+						"max":1
+					},
+					"redStart":{
+						"max":1
+					},
+					"redEnd":{
+						"max":1
+					},
+					"pointerValue":{
+						"max":1
+					},
+					"percentage":{
+						"max":1
+					}
+				}
+			],
+            "categorical": {
+                "categories": {
+                    "bind": {
+                        "to": "label"
+                    }
+                },
+                "values": {
+                    "select": [
+                        {
+                            "bind": {
+                                "to": "min"
+                            }
+                        },
+						{
+                            "bind": {
+                                "to": "max"
+                            }
+                        },
+						{
+                            "bind": {
+                                "to": "yellowStart"
+                            }
+                        },
+						{
+                            "bind": {
+                                "to": "yellowEnd"
+                            }
+                        },
+						{
+                            "bind": {
+                                "to": "redStart"
+                            }
+                        },
+						{
+                            "bind": {
+                                "to": "redEnd"
+                            }
+                        },
+						{
+                            "bind": {
+                                "to": "pointerValue"
+                            }
+                        },
+						{
+                            "bind": {
+                                "to": "percentage"
+                            }
+                        },
+						{
+                            "bind": {
+                                "to": "chartName"
+                            }
+                        }	
+                    ]
+                }
+            }
+        }	
+    ]
+}
