@@ -4,7 +4,7 @@
     "displayName": "DialGauge",
     "guid": "dg5AAA90EFEFE747CB9357C4FC19B85A58",
     "visualClassName": "Visual",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "description": "Description for custom ‘Dial Gauge’ visualization are as below:\n1.\tColour indicated by red displays actual value.\n2.\tColour indicated by yellow displays target value.\n3.\tPointer displays any value.\n4.\tNull/blank/max values will be indicated by colour green.\n5.\tDefault minimum value is 0.\n6.\tDefault maximum value is 100.\n7.\tAdditional label to display value. It append % sign.\n8.\tName of chart will be displayed on center of Dial Gauge.\n\nUpdate Note:- Fixed The bug for latest version of Power BI",
     "supportUrl": "http://www.cloudfronts.com/contact-us/",
     "gitHubUrl": ""
