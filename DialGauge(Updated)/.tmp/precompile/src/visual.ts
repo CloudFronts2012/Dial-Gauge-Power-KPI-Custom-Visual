@@ -866,6 +866,9 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
                         }
                     }
 
+                    if (majorText == "undefined" && viewModel.settings.generalFormat.format)
+                        majorText = "0K";
+
                     this.svg.append("svg:text")
                         .attr("x", point.x)
                         .attr("y", point.y)
@@ -905,7 +908,9 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
                 .append("svg:path")
                 .attr("d", pointerLine)
                 .style("fill", needlecolor)
-                .style("fill-opacity", 1.5)
+                .style("fill-opacity", 0.8)
+                .style("stroke", needlecolor)
+                .style("stroke-width", 1.5)
                 .attr("transform", "translate(" + this.config.cx + "," + this.config.cy + ") rotate(" + rotation + ")")
 
             pointerContainer.append("svg:circle")
