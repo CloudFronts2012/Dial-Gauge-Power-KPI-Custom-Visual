@@ -490,21 +490,24 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
             this.svg.selectAll("*").remove();
         }
 
-        public getFormattedValue(val: number, decprec: number, lead: string, trail: string): string {
+        public getFormattedValue(num: number, decprec: number, lead: string, trail: string): string {
 
-            let formattedValue = lead + (val).toFixed(decprec) + trail;
+            let value = num.toFixed(decprec);
+            let formattedValue = lead + value + trail;
             return formattedValue;
         }
 
-        public getFormattedValueKM(val: number, decprec: number, lead: string , trail: string): string {
-            let formattedValue;
-            let leadsym = "";
-            if (999 < val && val < 999999) {
-                var round = (val / 1000).toFixed(decprec);
+        public getFormattedValueKM(num: number, decprec: number, lead: string , trail: string): string {
+            let formattedValue,value, round;
+
+            if (999 < num && num < 999999) {
+                value = (num / 1000).toFixed(decprec);
+                round = (num / 1000).toFixed(decprec);
                 formattedValue = lead + round + "K " + trail;
             }
-            else if (val > 999999) {
-                var round = (val / 1000000).toFixed(decprec);
+            else if (num > 999999) {
+                value = (num / 1000000).toFixed(decprec);
+                round = (num / 1000000).toFixed(decprec);
                 formattedValue = lead + round + "M " + trail;
             }
             else

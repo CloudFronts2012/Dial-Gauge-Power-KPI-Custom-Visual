@@ -1112,19 +1112,21 @@ var powerbi;
                         this.config.cy = this.config.size / 2;
                         this.svg.selectAll("*").remove();
                     };
-                    Visual.prototype.getFormattedValue = function (val, decprec, lead, trail) {
-                        var formattedValue = lead + (val).toFixed(decprec) + trail;
+                    Visual.prototype.getFormattedValue = function (num, decprec, lead, trail) {
+                        var value = num.toFixed(decprec);
+                        var formattedValue = lead + value + trail;
                         return formattedValue;
                     };
-                    Visual.prototype.getFormattedValueKM = function (val, decprec, lead, trail) {
-                        var formattedValue;
-                        var leadsym = "";
-                        if (999 < val && val < 999999) {
-                            var round = (val / 1000).toFixed(decprec);
+                    Visual.prototype.getFormattedValueKM = function (num, decprec, lead, trail) {
+                        var formattedValue, value, round;
+                        if (999 < num && num < 999999) {
+                            value = (num / 1000).toFixed(decprec);
+                            round = (num / 1000).toFixed(decprec);
                             formattedValue = lead + round + "K " + trail;
                         }
-                        else if (val > 999999) {
-                            var round = (val / 1000000).toFixed(decprec);
+                        else if (num > 999999) {
+                            value = (num / 1000000).toFixed(decprec);
+                            round = (num / 1000000).toFixed(decprec);
                             formattedValue = lead + round + "M " + trail;
                         }
                         else
@@ -1713,7 +1715,7 @@ var powerbi;
                 name: 'dg5AAA90EFEFE747CB9357C4FC19B85A58',
                 displayName: 'DialGauge',
                 class: 'Visual',
-                version: '3.1.0',
+                version: '3.1.3',
                 apiVersion: '1.7.0',
                 create: function (options) { return new powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58.Visual(options); },
                 custom: true
