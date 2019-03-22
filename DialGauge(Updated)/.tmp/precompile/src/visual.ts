@@ -298,6 +298,7 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
             var metadataColumns = dataViews[0].metadata.columns;
 
 
+          
 
             for (var j = 0; j < categorical.values.length; j++) {
 
@@ -305,8 +306,9 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
                 var currentVal = categorical.values[j].values[k] || 0;
                 var datavaluemax = categorical.values[j];
 
+               
 
-                if (col && col.roles) {
+                if (col && col.roles && !col.type.dateTime) {
                     if (col.roles[gaugeChartRoleNames.max]) {
                         maximum = <number>currentVal;
                     } else if (col.roles[gaugeChartRoleNames.min]) {
@@ -323,12 +325,17 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
                         percValue = <number>currentVal;
                     } else if (col.roles[gaugeChartRoleNames.pointerValue]) {
                         pointValue = <number>currentVal;
-                    } else if (col.roles[gaugeChartRoleNames.chartName]) {
+                    } 
+                }
+
+                if (col && col.roles) {
+                    if (col.roles[gaugeChartRoleNames.chartName]) {
                         cName = <string>currentVal;
                     }
 
                 }
             }
+            
 
             if (maximum === undefined) {
                 maximum = gaugeDataPoint.max;
@@ -904,7 +911,7 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
 
             if (viewModel.settings.reverse.show)
                 rotation = rotation * (-1);
-
+            
             pointerContainer.selectAll("path")
                 .data([pointerPath])
                 .enter()
@@ -914,7 +921,7 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
                 .style("fill-opacity", 0.8)
                 .style("stroke", needlecolor)
                 .style("stroke-width", 1.5)
-                .attr("transform", "translate(" + this.config.cx + "," + this.config.cy + ") rotate(" + rotation + ")")
+                .attr("transform", "translate(" + this.config.cx + "," + this.config.cy + ") rotate(" + rotation + ")")  
 
             pointerContainer.append("svg:circle")
                 .attr("cx", this.config.cx)
@@ -939,6 +946,7 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
 
         public drawBand(start: number, end: number, color: string, ToolTipText: string, viewModel: GaugeChartModel, bandColor: string) {
 
+        
             if (0 >= end - start) return;
 
             let Band;
@@ -962,10 +970,11 @@ module powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58  {
                 reverse = " scale(1,-1)";
             else
                  reverse = "";
-
+           
             Band.style("fill", color)
                 .attr("d", <any>arc)
                 .attr("transform", "translate(" + this.config.cx + "," + this.config.cy + ") rotate(270)" + reverse)
+
 
             this.tooltipServiceWrapper.addTooltip(this.svg.selectAll('.band1'),
                 (tooltipEvent: TooltipEventArgs<number>) => this.getTooltipData(tooltipEvent.data, 1),

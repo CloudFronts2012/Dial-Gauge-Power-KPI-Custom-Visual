@@ -944,7 +944,7 @@ var powerbi;
                             var col = categorical.values[j].source;
                             var currentVal = categorical.values[j].values[k] || 0;
                             var datavaluemax = categorical.values[j];
-                            if (col && col.roles) {
+                            if (col && col.roles && !col.type.dateTime) {
                                 if (col.roles[dg5AAA90EFEFE747CB9357C4FC19B85A58.gaugeChartRoleNames.max]) {
                                     maximum = currentVal;
                                 }
@@ -969,7 +969,9 @@ var powerbi;
                                 else if (col.roles[dg5AAA90EFEFE747CB9357C4FC19B85A58.gaugeChartRoleNames.pointerValue]) {
                                     pointValue = currentVal;
                                 }
-                                else if (col.roles[dg5AAA90EFEFE747CB9357C4FC19B85A58.gaugeChartRoleNames.chartName]) {
+                            }
+                            if (col && col.roles) {
+                                if (col.roles[dg5AAA90EFEFE747CB9357C4FC19B85A58.gaugeChartRoleNames.chartName]) {
                                     cName = currentVal;
                                 }
                             }
@@ -1715,7 +1717,7 @@ var powerbi;
                 name: 'dg5AAA90EFEFE747CB9357C4FC19B85A58',
                 displayName: 'DialGauge',
                 class: 'Visual',
-                version: '3.1.3',
+                version: '3.1.4',
                 apiVersion: '1.7.0',
                 create: function (options) { return new powerbi.extensibility.visual.dg5AAA90EFEFE747CB9357C4FC19B85A58.Visual(options); },
                 custom: true
